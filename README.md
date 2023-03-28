@@ -1,2 +1,1 @@
-# premature-tracking-SNS
-This GitHub repository contains the source code and project files for our premature tracking application, which is designed to provide timely reminders to doctors regarding a premature baby's routine monitoring through AWS SNS system.
+NICU Newborn Tracker is a game-changing application that aims to revolutionize neonatal care. By utilizing the power of AWS services, we have built a secure, scalable, and efficient platform that can help healthcare providers better care for their most vulnerable patients. We are confident that our innovative approach to NICU management will attract funding and support from startup investors and organizations interested in improving neonatal care outcomes.
