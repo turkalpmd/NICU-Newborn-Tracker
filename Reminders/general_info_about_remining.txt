@@ -1,0 +1,36 @@
+# Bu projede hastaların doğum tarihleri '%Y-%m-%d' formatında verilecektir
+# Hasta doğum ağırlıkları da gram cinsinden verilecektir
+# Önce bu tarihleri UNIX time'a çevirip gelecekteki bir '%Y-%m-%d' formatlı tarihin unix dönüşümünden çıkarıldığında
+# Unix time normal gün olarak alınıp x,5'ten küçük ise x'e x,5'ten ise x+1'e yuvarlanacaktır.
+# elde edilen güne göre birazdan yazacağım durumlardan büyükse gecikmiş olma ihtimali nedeniyle bu uyarıların hangileri olduğunu çeviren bir python fonksiyonu kurgulanacak
+
+# Tüm hastalar için; --> Doğum tarihine bakılmaksızın
+# 
+# doğum tarihinden 7. gün sonra 'D vitamini başla'
+
+# doğum tarihinden 30 gün sonra 'Hepatit B aşısı' ancak;
+    # Şu koşullardan hangisi daha yakınsa;
+    # Doğum ağırlığı 2000 gr'ın altında olan bebeklerde;
+    # Günlük doğum ağırlığı sorgulanmalı 2000 gramı 30. günden önce geçerse Hepatit B aşısı için uyarılmalı
+    # 2000 grama ilk 30 gün içerisinde ulaşamıyorsa
+        #   Doğduktan 30 gün sonra, Hepatit B aşısı için uyarılmamlı
+# doğum tarihinden 60 gün sonra BCG, Karma, KPA aşısı yapıldı mı?
+# doğum tarihinden 120 gün sonra Karma, KPA aşısı yapıldı mı?
+
+
+# 34 Haftadan daha küçük doğan veya 1700 gramdan daha düşük ağırlıkta doğan bebeklerde;
+# 34 haftadan küçük tüm doğanları için rutin uygulamalar
+    # doğum tarihinden 7 gün sonra Tiroid fonksiyonları için uyarı
+    # doğum tarihinden 14 gün sonra Doğum ağırlığına ulaşmış olması hakkın hatırlatılmalı
+    # doğum tarihinden 28 gün sonra ROP muayenesi hatırlatılmalı
+    # doğum tarihinden 30 gün sonra Demir profilaksisi hatırlatılmalı
+
+    # Eğer 32 haftadan daha küçükse 34 haftadan küçük tüm doğanları için rutin uygulamalara ek olarak;
+        # doğum tarihinden 3 gün sonra TFUS hatırlatması
+        # doğum tarihinden 3 gün sonra EKO hatırlatması
+        # doğum tarihinden 21 gün sonra osteopnei değerlendirilmesi hatırlatılmalı
+        # doğum tarihinden 21 gün sonra anemi değerlendirilmesi hatırlatılmalı
+        # doğum tarihinden 28 gün sonra Kan tetkikleri hatırlatılmalı (Ca, P, ALP, CBC)
+
+        # Eğer 28 haftadan erken doğmuşsa;
+            # Sayılan tüm hatırlatmalara ek olarak hayatının 1. gününde TFUS hatırlatması
