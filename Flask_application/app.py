@@ -23,7 +23,7 @@ def insert():
         'doctor_email': request.form['doctor_email'],
         'doctor_phone_number': request.form['doctor_phone_number']
     }
-    response = requests.get("https://rqlm1266lb.execute-api.eu-central-1.amazonaws.com/doctor_create", params=doctor_data)
+    response = requests.get("https://API_gateway_endpoint", params=doctor_data)
     if response.status_code == 200:
         var = 'Registration is succesfully'
     return render_template('index.html',var=var)
