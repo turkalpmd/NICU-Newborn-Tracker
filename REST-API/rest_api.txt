@@ -1,0 +1,14 @@
+/
+    ANY - JWT Auth
+/baby
+    GET - JWT Auth
+    POST - JWT Auth
+    PUT - JWT Auth
+    DELETE - JWT Auth
+/cron
+    GET - JWT Auth
+/doctor
+    POST - JWT Auth
+    GET - JWT Auth
+    PUT - JWT Auth
+    DELETE - JWT Auth

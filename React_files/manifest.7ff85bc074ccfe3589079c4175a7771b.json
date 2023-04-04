@@ -1,0 +1,20 @@
+{
+  "icons": [
+    {
+      "src": "/icon_144x144.fe1e7ec6dce7b4509e358d14f78b1b6f.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "name": "Dp React App",
+  "short_name": "React App",
+  "orientation": "landscape",
+  "display": "fullscreen",
+  "start_url": "https://9best.site",
+  "lang": "en",
+  "dir": "ltr",
+  "background_color": "#161d31",
+  "scope": "/",
+  "theme_color": "#161d31",
+  "description": "It is manifest file for dp web application"
+}
