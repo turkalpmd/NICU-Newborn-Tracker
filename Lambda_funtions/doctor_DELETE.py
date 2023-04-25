@@ -1,6 +1,10 @@
 import json
 import psycopg2
 import os
+from urllib.parse import parse_qs
+from urllib.parse import parse_qsl
+import base64
+import hashlib
 
 DB_HOST = "your_db_host"
 DB_NAME = "your_db_name
@@ -9,10 +13,20 @@ DB_PASSWORD = "your_db_password
 DB_PORT = "your_db_port
 
 def lambda_handler(event, context):
+    # Replace with the new key
+    request_body = event['body']
+    body = base64.b64decode(request_body).decode('utf-8')
+    data = parse_qs(body)
+    baby_name = data["baby_name"][0]
+    baby_surname = data["baby_surname"][0]
+    birth_date = data["birth_date"][0]
+    birth_hour = data["birth_hour"][0]
+    
+    # Creating md5 baby_id with new variables to check with database
+    baby_md5_str = baby_name + baby_surname + birth_date + birth_hour
+    baby_id_md5 = hashlib.md5(baby_md5_str.encode())
+    baby_id_md5 = baby_id_md5.hexdigest()
 
-    
-    doctor_id = event["queryStringParameters"]["doctor_id"]
-    
     # Connect to the PostgreSQL database
     conn = psycopg2.connect(
         host=DB_HOST,
@@ -22,13 +36,14 @@ def lambda_handler(event, context):
         port=DB_PORT
     )
 
-    # Execute DELETE SQL Query
+    # Delete the data from the "baby_table" table
     cursor = conn.cursor()
-    postgreSQL_delete_Query = "DELETE FROM doctors WHERE doctor_id = %s RETURNING *"
-    cursor.execute(postgreSQL_delete_Query, (doctor_id,))
+    postgreSQL_delete_Query = "DELETE FROM baby_table WHERE baby_id_md5 = %s RETURNING *"
+
+    cursor.execute(postgreSQL_delete_Query, (baby_id,))
     deleted_records = cursor.fetchall()
     conn.commit()
-    
+
     # Close the database connection
     cursor.close()
     conn.close()
@@ -47,3 +62,4 @@ def lambda_handler(event, context):
         },
         'body': json.dumps({'message': message, 'data': deleted_records})
     }
+   
